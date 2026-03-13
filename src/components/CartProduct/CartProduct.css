@@ -16,14 +16,16 @@
 }
 
 .cart__product__info {
-
+    display: inline-flex;
+    align-items: center;
+    gap: 36px;
 }
 
 .cart__product__price {
     font-size: 1.1em;
     font-weight: bold;
     color: #333;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .cart__product__quantity_button {

@@ -2,6 +2,7 @@ import {useDispatch} from "react-redux";
 import {decrementQuantity, incrementQuantity, removeFromCart} from "../../redux/slices/cartSlice.jsx";
 import PropTypes from "prop-types";
 import './CartProduct.css';
+import QuantityControls from "../QuantityControls/QuantityControls.jsx";
 
 const CartProduct = ({product}) => {
 
@@ -27,10 +28,13 @@ const CartProduct = ({product}) => {
             <div className={'cart__product__name'}>{product.quantity}x {product.name}</div>
             <div className={'cart__product__info'}>
                 <span className={'cart__product__price'}>€{(product.unitPrice * product.quantity).toFixed(2)}</span>
-                <button className={'cart__product__quantity_button'} onClick={() => handleDecrementQuantity(product.id)}>-</button>
-                <span className={'cart__product__quantity'}>{product.quantity}</span>
-                <button className={'cart__product__quantity_button'} onClick={() => handleIncrementQuantity(product.id)}>+</button>
-                <button className={'cart__product__delete'} onClick={() => handleDeleteFromCart(product.id)}>DELETE</button>
+                <QuantityControls
+                    quantity={product.quantity}
+                    onIncrement={() => handleIncrementQuantity(product.id)}
+                    onDecrement={() => handleDecrementQuantity(product.id)}
+                    onRemove={() => handleDeleteFromCart(product.id)}
+                    compact
+                />
             </div>
         </div>
     );
