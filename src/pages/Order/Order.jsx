@@ -1,3 +1,4 @@
+import {useState} from "react";
 import {useParams} from "react-router-dom";
 import OrderProduct from "../../components/OrderProduct/OrderProduct.jsx";
 import './Order.css';
@@ -7,19 +8,42 @@ import ProductButton from "../../components/Button/ProductButton.jsx";
 
 const Order = () => {
     const params = useParams();
-    const {data: response, loading, error} = useFetch(`${PIZZA_API}/order/${params.id}`);
+    const {data: response, loading, error, refetch} = useFetch(`${PIZZA_API}/order/${params.id}`);
+    const [isPrioritizing, setIsPrioritizing] = useState(false);
+    const [priorityFeedback, setPriorityFeedback] = useState(null);
+
+    const handlePrioritize = async () => {
+        if (!response?.data || isPrioritizing) return;
+        const order = response.data;
+        setIsPrioritizing(true);
+        setPriorityFeedback(null);
+        try {
+            const res = await fetch(`${PIZZA_API}/order/${params.id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ priority: !order.priority }),
+            });
+            const json = await res.json();
+            if (json.status === "success") {
+                await refetch();
+                setPriorityFeedback({ type: "success", message: order.priority ? "Priority removed." : "Order set as priority." });
+            } else {
+                setPriorityFeedback({ type: "error", message: "Could not update priority. Try again." });
+            }
+        } catch (err) {
+            setPriorityFeedback({ type: "error", message: "Something went wrong. Please try again." });
+        } finally {
+            setIsPrioritizing(false);
+        }
+    };
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Something went wrong: {error.message}</div>;
 
     const order = response.data;
-    console.log(order);
-
     const estimatedDelivery = new Date(order.estimatedDelivery);
-    const waitTimeMinutes =  (estimatedDelivery.getTime() - new Date().getTime())/60000;
-
-
-    const products = order.cart
+    const waitTimeMinutes = (estimatedDelivery.getTime() - new Date().getTime()) / 60000;
+    const products = order.cart;
 
     return (
         <div className="order__container">
@@ -46,10 +70,22 @@ const Order = () => {
                 <p>Price priority: €{order.priorityPrice.toFixed(2)}</p>
                 <p className={"order-summary__final-price"}>To pay on delivery: €{(order.orderPrice + order.priorityPrice).toFixed(2)}</p>
             </div>
-            <div className={"prioritize__container"}>
-                <span></span>
-                <ProductButton text={"PRIORITIZE"} />
-            </div>
+            {!order.priority && (
+                <div className={"prioritize__container"}>
+                    <div className="prioritize__feedback">
+                        {priorityFeedback && (
+                            <span className={priorityFeedback.type === "success" ? "prioritize__success" : "prioritize__error"}>
+                                {priorityFeedback.message}
+                            </span>
+                        )}
+                    </div>
+                    <ProductButton
+                        text={isPrioritizing ? "Updating…" : "PRIORITIZE"}
+                        onClick={handlePrioritize}
+                        disabled={isPrioritizing}
+                    />
+                </div>
+            )}
         </div>
     );
 };

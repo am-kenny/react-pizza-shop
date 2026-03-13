@@ -77,3 +77,19 @@
     align-items: center;
     margin-bottom: 1rem;
 }
+
+.prioritize__feedback {
+    min-height: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.prioritize__success {
+    color: #2ECC40;
+    font-weight: 500;
+}
+
+.prioritize__error {
+    color: #FF4136;
+    font-weight: 500;
+}

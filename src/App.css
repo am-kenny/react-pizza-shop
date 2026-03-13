@@ -73,5 +73,6 @@ body {
 
 .content__container {
     overflow-y: auto;
+    padding-top: 4rem;
 }
 

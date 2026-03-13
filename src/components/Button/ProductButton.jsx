@@ -3,10 +3,17 @@ import './Button.css';
 
 const ProductButton = (props) => {
 
-    const { text = "Default text", onClick, isPrimary = true, type = null } = props;
+    const { text = "Default text", onClick, isPrimary = true, type = null, disabled = false } = props;
 
     return (
-        <button className={`button ${isPrimary ? "primary__button": "secondary__button"}`} onClick={onClick}>{text}</button>
+        <button
+            className={`button ${isPrimary ? "primary__button": "secondary__button"}`}
+            onClick={onClick}
+            type={type}
+            disabled={disabled}
+        >
+            {text}
+        </button>
     )
 }
 
@@ -14,7 +21,8 @@ ProductButton.propTypes = {
     onClick: PropTypes.func,
     text: PropTypes.string,
     isPrimary: PropTypes.bool,
-    type: PropTypes.string
+    type: PropTypes.string,
+    disabled: PropTypes.bool
 }
 
 export default ProductButton;
