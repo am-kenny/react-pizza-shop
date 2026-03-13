@@ -7,6 +7,7 @@ import PageNotFound from "./pages/PageNotFound.jsx";
 import Menu from "./pages/Menu/Menu.jsx";
 import {UserContext} from "./context/UserInfoContext.jsx";
 import {useContext} from "react";
+import {useSelector} from "react-redux";
 import Cart from "./pages/Cart/Cart.jsx";
 import cartImage from './assets/images/cart.png'
 import NewOrder from "./pages/NewOrder/NewOrder.jsx";
@@ -17,6 +18,9 @@ function App() {
 
     const name = useContext(UserContext)[0]
     const navigate = useNavigate();
+    const totalCartItems = useSelector((state) =>
+        state.cart.items.reduce((sum, item) => sum + item.quantity, 0)
+    );
 
     return (
         <div className="App">
@@ -28,7 +32,12 @@ function App() {
                     </div>
 
                     <div className={'cart_and_name'}>
-                        <img className={'cart_image'} src={cartImage} alt={'Cart'} onClick={() => navigate('/cart')}/>
+                        <div className="cart-icon-wrapper" onClick={() => navigate('/cart')}>
+                            <img className={'cart_image'} src={cartImage} alt={'Cart'}/>
+                            {totalCartItems > 0 && (
+                                <span className="cart-badge">{totalCartItems}</span>
+                            )}
+                        </div>
                         <div className={"user_name"}>
                             {name}
                         </div>
