@@ -19,3 +19,20 @@
     color: #fff;
     cursor: pointer;
 }
+
+.name__input__form input[type="text"][aria-invalid="true"] {
+    border-color: #c00;
+    outline-color: #c00;
+}
+
+.name__input__error {
+    margin: 6px 0 0;
+    font-size: 0.9rem;
+    color: #c00;
+}
+
+.name__input__success {
+    margin: 0;
+    font-size: 1rem;
+    color: #0a0;
+}
