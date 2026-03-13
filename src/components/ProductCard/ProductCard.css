@@ -59,6 +59,99 @@
 .add-to-cart-btn {
     height: fit-content;
     align-self: end;
+    display: inline-flex;
+    min-width: 190px;
+    justify-content: flex-end;
+}
+
+.add-to-cart-btn .button {
+    width: 100%;
+    text-align: center;
+}
+
+.product-quantity-controls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    margin-left: 0;
+    width: 100%;
+}
+
+.product-quantity-button {
+    min-width: 42px;
+    height: 40px;
+    border-radius: 14px;
+    border: none;
+    background-color: #e8b208;
+    color: #333;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.product-quantity-button:hover:not(:disabled) {
+    background-color: #f1c40f;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.product-quantity-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.product-quantity-button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.product-quantity-value {
+    min-width: 32px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+.product-remove-button {
+    padding: 6px 10px;
+    border-radius: 14px;
+    border: none;
+    background-color: #ff3b30;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.product-remove-button:hover {
+    background-color: #e53935;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+}
+
+.product-remove-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.product-remove-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
 }
 
 .product-card.placeholder {

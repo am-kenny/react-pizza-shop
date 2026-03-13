@@ -6,14 +6,16 @@ import {validationSchema} from "../../validationSchema.js";
 import TextInput from "../../components/Input/TextInput.jsx";
 import CheckboxInput from "../../components/Input/CheckboxInput.jsx";
 import ProductButton from "../../components/Button/ProductButton.jsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import './NewOrder.css';
 import {useNavigate} from "react-router-dom";
 import {PIZZA_API} from "../../constants.js";
+import {clearCart} from "../../redux/slices/cartSlice.jsx";
 
 const NewOrder = () => {
     const name = useContext(UserContext)[0]
     const {totalPrice, items} = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [postError, setPostError] = useState(false);
 
@@ -57,6 +59,8 @@ const NewOrder = () => {
             });
             const res = await response.json();
             if  (res.status === 'success') {
+                // Clear cart after successful order placement
+                dispatch(clearCart());
                 navigate(`/order/${res.data.id}`)
             } else {
                 setPostError(true);
