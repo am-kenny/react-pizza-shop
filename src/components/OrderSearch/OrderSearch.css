@@ -1,0 +1,65 @@
+.order-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.order-search__form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-search__input {
+    font-family: 'Source Code Pro', monospace;
+    padding: 10px;
+    width: 220px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fcee89;
+}
+
+.order-search__input::placeholder {
+    font-family: 'Source Code Pro', monospace;
+    color: #a8a59b;
+    font-style: italic;
+}
+
+.order-search__input:focus {
+    outline: 2px solid #333;
+    outline-offset: 1px;
+}
+
+.order-search__input:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.order-search__btn {
+    font-family: 'Source Code Pro', monospace;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fcee89;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.order-search__btn:hover:not(:disabled) {
+    background-color: #555;
+}
+
+.order-search__btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.order-search__message {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #b71c1c;
+    font-weight: 500;
+}

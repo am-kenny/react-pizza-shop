@@ -11,6 +11,7 @@ import Cart from "./pages/Cart/Cart.jsx";
 import cartImage from './assets/images/cart.png'
 import NewOrder from "./pages/NewOrder/NewOrder.jsx";
 import Order from "./pages/Order/Order.jsx";
+import OrderSearch from "./components/OrderSearch/OrderSearch.jsx";
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
                 <div className="header-container">
                     <h1 className={"header__company__name"}>PIZZA DAY</h1>
                     <div className="search-container">
-                        <input type="text" placeholder="Search for the order #"/>
+                        <OrderSearch />
                     </div>
 
                     <div className={'cart_and_name'}>
