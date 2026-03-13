@@ -32,10 +32,15 @@ const Menu = () => {
         )
     }
 
+    const sortedMenuItems = [...(menuItems || [])].sort((a, b) => {
+        if (a.soldOut === b.soldOut) return 0;
+        return a.soldOut ? 1 : -1; // available first, unavailable last
+    });
+
     return (
         <div className="container">
             <div>
-                {!!menuItems && menuItems.map((product) => (
+                {sortedMenuItems.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
