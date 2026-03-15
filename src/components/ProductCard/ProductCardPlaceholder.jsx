@@ -14,7 +14,9 @@ const ProductCardPlaceholder = () => {
                     <p className="product-ingredients placeholder"></p>
                     <div className="product-price placeholder"></div>
                 </div>
-                <div className="add-to-cart-btn"></div>
+                <div className="add-to-cart-btn">
+                    <div className="add-to-cart-btn__inner"></div>
+                </div>
             </div>
         </div>
     );

@@ -59,17 +59,19 @@ const ProductCard = ({product}) => {
                     <div className="product-price">{soldOut ? 'SOLD OUT' : `€${unitPrice.toFixed(2)}`}</div>
                 </div>
                 <div className="add-to-cart-btn">
-                    {showAddButton && (
-                        <ProductButton onClick={handleAddToCart} text={"ADD TO CART"} />
-                    )}
-                    {showQuantityControls && (
-                        <QuantityControls
-                            quantity={quantityInCart}
-                            onIncrement={handleIncrementQuantity}
-                            onDecrement={handleDecrementQuantity}
-                            onRemove={handleRemoveFromCart}
-                        />
-                    )}
+                    <div className="add-to-cart-btn__inner">
+                        {showAddButton && (
+                            <ProductButton onClick={handleAddToCart} text={"ADD TO CART"} />
+                        )}
+                        {showQuantityControls && (
+                            <QuantityControls
+                                quantity={quantityInCart}
+                                onIncrement={handleIncrementQuantity}
+                                onDecrement={handleDecrementQuantity}
+                                onRemove={handleRemoveFromCart}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

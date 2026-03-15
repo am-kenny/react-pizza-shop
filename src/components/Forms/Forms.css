@@ -1,8 +1,39 @@
+.name__input__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .name__input__form {
+        flex-direction: row;
+        align-items: center;
+        width: fit-content;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
 .name__input__form input[type="text"] {
     font-family: 'Source Code Pro', monospace;
-    padding: 10px;
+    padding: 0 10px;
+    height: 40px;
+    width: 100%;
+    min-width: 0;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .name__input__form input[type="text"] {
+        width: 280px;
+        flex: none;
+    }
 }
 
 .name__input__form input[type="text"]::placeholder {
@@ -12,12 +43,15 @@
 
 .name__input__form input[type="submit"] {
     font-family: 'Source Code Pro', monospace;
-    padding: 10px;
+    padding: 0 10px;
+    height: 40px;
+    flex-shrink: 0;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #333;
     color: #fff;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .name__input__form input[type="text"][aria-invalid="true"] {
@@ -29,6 +63,7 @@
     margin: 6px 0 0;
     font-size: 0.9rem;
     color: #c00;
+    flex-basis: 100%;
 }
 
 .name__input__success {

@@ -1,9 +1,22 @@
 .order-product {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 8px;
     margin-bottom: 1rem;
     padding: 1rem;
     border-bottom: 1px solid #ccc;
+    min-width: 0;
+}
+
+.order-product-details {
+    min-width: 0;
+}
+
+.order-product-details h3,
+.order-product-details p {
+    min-width: 0;
+    overflow-wrap: break-word;
 }
 
 .order-product-details h3 {

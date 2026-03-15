@@ -1,24 +1,46 @@
 .cart__product__container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 20px auto;
-    width: 1200px;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 1200px;
+    gap: 12px;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    padding-bottom: 16px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+    .cart__product__container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px auto;
+        gap: 0;
+        padding-bottom: 10px;
+    }
 }
 
 .cart__product__name {
     font-size: 1.2em;
     margin: 0;
     color: #333;
+    min-width: 0;
 }
 
 .cart__product__info {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 36px;
+    gap: 12px 36px;
+    min-width: 0;
+}
+
+@media (min-width: 960px) {
+    .cart__product__info {
+        flex-wrap: nowrap;
+    }
 }
 
 .cart__product__price {
@@ -32,11 +54,18 @@
     border: none;
     padding: 10px 15px;
     margin: 0 5px;
+    min-height: 44px;
+    min-width: 44px;
     cursor: pointer;
     transition: 0.3s;
     font-weight: bold;
     background-color: #e8b208;
     border-radius: 10px;
+}
+
+.cart__product__quantity_button:focus-visible {
+    outline: 2px solid #333;
+    outline-offset: 2px;
 }
 
 .cart__product__quantity_button:hover {
@@ -48,14 +77,28 @@
 }
 
 .cart__product__delete {
-    margin-left: 10px;
+    margin: 0;
+    margin-top: 8px;
     border: none;
     padding: 14px 26px;
+    min-height: 44px;
     border-radius: 15px;
     cursor: pointer;
     transition: 0.3s;
     font-weight: bold;
     background-color: #e8b208;
+}
+
+@media (min-width: 960px) {
+    .cart__product__delete {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+}
+
+.cart__product__delete:focus-visible {
+    outline: 2px solid #333;
+    outline-offset: 2px;
 }
 
 .cart__product__delete:hover {

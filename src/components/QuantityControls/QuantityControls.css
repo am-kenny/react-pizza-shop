@@ -1,10 +1,11 @@
 .product-quantity-controls {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 6px;
+    justify-content: flex-start;
+    gap: 10px;
     margin-left: 0;
     width: 100%;
+    min-height: 44px;
 }
 
 .product-quantity-controls--compact {
@@ -14,8 +15,9 @@
 }
 
 .product-quantity-button {
-    min-width: 42px;
-    height: 40px;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
     border-radius: 14px;
     border: none;
     background-color: #e8b208;
@@ -47,15 +49,22 @@
 }
 
 .product-quantity-value {
-    min-width: 32px;
+    min-width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    line-height: 1;
     color: #333;
+    flex-shrink: 0;
 }
 
 .product-remove-button {
-    padding: 6px 10px;
+    padding: 0 10px;
+    height: 44px;
     border-radius: 14px;
     border: none;
     background-color: #ff3b30;
@@ -67,9 +76,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 44px;
+    box-sizing: border-box;
+    margin-left: auto;
     transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.product-quantity-button:focus-visible,
+.product-remove-button:focus-visible {
+    outline: 2px solid #333;
+    outline-offset: 2px;
 }
 
 .product-remove-button:hover {

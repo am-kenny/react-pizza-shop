@@ -21,7 +21,7 @@ const Menu = () => {
     if (isLoading) {
         return (
             <div className="container">
-                <div>
+                <div className="container__list">
                         <ProductCardPlaceholder/>
                         <ProductCardPlaceholder/>
                         <ProductCardPlaceholder/>
@@ -39,7 +39,7 @@ const Menu = () => {
 
     return (
         <div className="container">
-            <div>
+            <div className="container__list">
                 {sortedMenuItems.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}

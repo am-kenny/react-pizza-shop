@@ -1,10 +1,17 @@
 .button {
     border: none;
     padding: 18px 35px;
+    min-height: 44px;
     border-radius: 15px;
     cursor: pointer;
     transition: 0.3s;
     font-weight: bold;
+    box-sizing: border-box;
+}
+
+.button:focus-visible {
+    outline: 2px solid #333;
+    outline-offset: 2px;
 }
 
 .primary__button {

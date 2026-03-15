@@ -1,35 +1,78 @@
 .main-container {
     text-align: center;
-    padding: 50px 20px;
+    padding: 24px 16px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+    .main-container {
+        padding: 50px 20px;
+    }
 }
 
 .pizza__title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
+@media (min-width: 600px) {
+    .pizza__title {
+        font-size: 2rem;
+    }
+}
+
 .pizza__title__yellow {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #f1c40f;
     margin-bottom: 20px;
 }
 
+@media (min-width: 600px) {
+    .pizza__title__yellow {
+        font-size: 2rem;
+    }
+}
+
 .welcome__text {
     margin-bottom: 10px;
     font-weight: 500;
+    color: #f1c40f;
 }
 
 .menu__link__container {
-    margin-top: 50px;
+    margin-top: 32px;
+}
+
+@media (min-width: 960px) {
+    .menu__link__container {
+        margin-top: 50px;
+    }
 }
 
 .menu__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.2rem;
     font-weight: 500;
     color: #000000;
     text-decoration: none;
     background-color: #f1c40f;
-    padding: 5px 40px;
+    padding: 12px 40px;
+    min-height: 44px;
     border-radius: 5px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+    .menu__link {
+        padding: 5px 40px;
+        min-height: 0;
+    }
+}
+
+.menu__link:focus-visible {
+    outline: 2px solid #333;
+    outline-offset: 2px;
 }

@@ -1,92 +1,210 @@
+/* ========== Mobile first ========== */
+
 .product-card {
-    padding-bottom: 10px;
-    width: 940px;
+    width: 100%;
+    max-width: 940px;
+    padding: 20px 0;
+    margin-bottom: 16px;
     border-bottom: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    border-radius: 8px;
     display: flex;
-    flex-direction: row;
-
-}
-
-.product-card.sold-out > .product-image-container {
-    filter: grayscale(100%);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    box-sizing: border-box;
 }
 
 .product-image-container {
-    width: 150px;
+    width: 100%;
+    max-width: 200px;
+    flex-shrink: 0;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .product-image {
     width: 100%;
     height: auto;
     display: block;
+    vertical-align: middle;
+}
+
+.product-card.sold-out > .product-image-container {
+    filter: grayscale(100%);
 }
 
 .product-info {
-    padding-left: 20px;
     width: 100%;
+    min-width: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
 }
 
 .product-info-text {
     display: flex;
     flex-direction: column;
-    align-self: center;
+    gap: 4px;
+    align-self: stretch;
 }
 
 .product-name {
-    font-size: 1.2em;
+    font-size: 1.25rem;
+    line-height: 1.3;
     margin: 0;
     color: #333;
+    font-weight: 600;
 }
 
 .product-ingredients {
-    font-size: 0.9em;
+    font-size: 0.9rem;
+    line-height: 1.4;
     color: #666;
     font-style: italic;
+    margin: 0;
 }
 
 .product-price {
-    font-size: 1.1em;
+    font-size: 1.15rem;
     font-weight: bold;
     color: #333;
-    margin-top: 20px;
+    margin: 12px 0 0;
 }
 
 .add-to-cart-btn {
-    height: fit-content;
-    align-self: end;
-    display: inline-flex;
-    min-width: 190px;
-    justify-content: flex-end;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.add-to-cart-btn__inner {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .add-to-cart-btn .button {
+    min-height: 48px;
     width: 100%;
     text-align: center;
 }
 
+.add-to-cart-btn .button:focus-visible {
+    outline: 2px solid #333;
+    outline-offset: 2px;
+}
+
+/* Placeholder – mobile */
 .product-card.placeholder {
     background-color: #f6f6f6;
 }
 
+.product-card.placeholder .add-to-cart-btn__inner {
+    min-height: 48px;
+}
+
 .product-name.placeholder {
     background-color: #ececec;
-    width: 120px;
-    height: 25px;
+    width: 70%;
+    max-width: 180px;
+    height: 24px;
+    border-radius: 4px;
 }
 
 .product-ingredients.placeholder {
     background-color: #ececec;
-    width: 200px;
-    height: 20px;
+    width: 100%;
+    max-width: 100%;
+    height: 18px;
+    border-radius: 4px;
 }
 
 .product-price.placeholder {
     background-color: #ececec;
-    width: 70px;
-    height: 30px;
+    width: 72px;
+    height: 24px;
+    margin: 12px 0 0;
+    border-radius: 4px;
+}
+
+/* ========== Desktop (960px+) ========== */
+
+@media (min-width: 960px) {
+    .product-card {
+        flex-direction: row;
+        align-items: stretch;
+        padding-bottom: 16px;
+        margin-bottom: 12px;
+        gap: 0;
+    }
+
+    .product-image-container {
+        width: 150px;
+        max-width: 150px;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .product-info {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0;
+        padding-left: 20px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .product-info-text {
+        align-self: center;
+    }
+
+    .product-name {
+        font-size: 1.2em;
+    }
+
+    .product-price {
+        margin-top: 20px;
+    }
+
+    .add-to-cart-btn {
+        align-self: flex-end;
+        justify-content: flex-end;
+        width: auto;
+    }
+
+    .add-to-cart-btn__inner {
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .add-to-cart-btn .button {
+        min-height: 44px;
+    }
+
+    /* Placeholder – desktop */
+    .product-card.placeholder .add-to-cart-btn__inner {
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .product-name.placeholder {
+        width: 120px;
+        max-width: none;
+    }
+
+    .product-ingredients.placeholder {
+        width: 200px;
+        max-width: 200px;
+    }
+
+    .product-price.placeholder {
+        margin-top: 20px;
+    }
 }

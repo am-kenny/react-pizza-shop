@@ -1,21 +1,38 @@
 .input__component__container {
     margin-bottom: 20px;
-
 }
 
 .input__container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 700px;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .input__container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 .input_field {
-    width: 500px;
+    width: 100%;
+    max-width: 100%;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 16px;
     padding: 0.5rem 0.5rem 0.5rem 1rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .input_field {
+        max-width: 500px;
+    }
 }
 
 .input_field:focus {
@@ -24,14 +41,21 @@
 }
 
 .checkbox__container {
-    width: 525px;
+    width: 100%;
+    max-width: 525px;
     margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
 }
 
 .checkbox__input {
-    margin-right: 10px;
-    transform: scale(1.2)
-
+    margin: 0;
+    transform: scale(1.2);
+    min-width: 20px;
+    min-height: 20px;
 }
 
 
